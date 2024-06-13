@@ -1,0 +1,85 @@
+/* AddProductPage.css */
+
+.addproduct-container {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    height: 100vh;
+    background-color: #f0f4f8;
+}
+
+.add-product-form-wrapper {
+    background-color: #ffffff;
+    padding: 20px;
+    border: 1px solid #e2e8f0;
+    border-radius: 10px;
+    box-shadow: 0 4px 6px rgba(0, 0, 0, 0.1);
+    width: 800px;
+}
+
+.add-product-form-header {
+    text-align: center;
+    margin-bottom: 20px;
+}
+
+.add-product-form-header h2 {
+    font-size: 24px;
+    color: #4f46e5;
+    font-weight: bold;
+}
+
+.add-product-form-row {
+    display: flex;
+    justify-content: space-between;
+    gap: 10px;
+    margin-bottom: 15px;
+}
+
+.add-product-form-group {
+    flex: 1;
+}
+
+.add-product-form-group input,
+.add-product-form-group select,
+.add-product-form-group textarea {
+    width: 100%;
+    padding: 10px;
+    border: 1px solid #cbd5e0;
+    border-radius: 5px;
+    outline: none;
+    color: #4a5568;
+}
+
+.add-product-form-group input::placeholder,
+.add-product-form-group select::placeholder,
+.add-product-form-group textarea::placeholder {
+    color: #a0aec0;
+}
+
+.add-product-form-group select {
+    appearance: none;
+}
+
+.add-product-form-group textarea {
+    resize: none;
+}
+
+.add-product-submit-btn {
+    width: 100%;
+    padding: 10px;
+    background-color: #4f46e5;
+    color: #ffffff;
+    border: none;
+    border-radius: 5px;
+    font-weight: bold;
+    cursor: pointer;
+    transition: background-color 0.3s;
+}
+
+.add-product-submit-btn:hover {
+    background-color: #4338ca;
+}
+
+.loader {
+    position: absolute;
+}

@@ -1,0 +1,21 @@
+nav {
+    justify-content: center;
+    width: 90%;
+}
+
+nav ul {
+    list-style: none;
+    display: flex;
+    flex-direction: row;
+    justify-content: center;
+}
+
+nav li {
+    padding: 0.5rem 3rem;
+    margin: 0rem 0.5rem;
+    font-family: var(--font1);
+    font-size: 1.2rem;
+    color: var(--color1);
+    border: 1px solid var(--color1);
+    background-color: var(--color5);
+}

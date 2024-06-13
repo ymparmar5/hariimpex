@@ -1,0 +1,74 @@
+/* Your existing footer styles */
+footer {
+    width: 100%;
+    padding: 1rem 4rem;
+    color: var(--color6);
+    background-color: var(--color4);
+    display: flex;
+    flex-direction: row;
+    justify-content: center;
+    margin: 1rem 0rem;
+  }
+  
+  .footer-menu {
+    font-size: 1.1rem;
+    width: 25%;
+    display: flex;
+    flex-direction: column;
+    justify-content: initial;
+    align-items: baseline;
+    text-align: left;
+    margin: 0rem 1rem;
+    color: var(--color6);
+  }
+  
+  .footer-menu li {
+    margin: 0.2rem 0rem;
+  }
+  
+  .footer-menu li:hover {
+    padding-left: 0.5rem;
+    color: var(--color1);
+  }
+  
+  .footer-heading {
+    font-family: var(--font1);
+    color: var(--color1);
+    font-size: 1.5rem;
+  }
+  
+  #footer-icons {
+    margin: 1rem 0rem;
+    display: flex;
+    flex-wrap: wrap;
+    justify-content: center;
+    align-items: center;
+  }
+  
+  .footer-icons {
+    margin: 1rem 0rem;
+    margin-right: 2rem;
+    color: var(--color6);
+  }
+  
+  .footer-icons:hover {
+    color: var(--color1);
+  }
+  
+  .footer-menu p {
+    width: 19rem;
+  }
+  
+  #madeby {
+    width: 100%;
+    position: relative;
+    bottom: 0px;
+    color: var(--color5);
+    background-color: var(--color6);
+  }
+  
+  @media (max-width: 1235px) {
+    footer {
+      display: none;
+    }
+  }

@@ -1,0 +1,42 @@
+#hero{
+display: flex;
+flex-direction: column;
+justify-content: center;
+align-items: center;
+margin-bottom: 4rem;
+}
+
+.banner{
+    width: 100vw;
+    height:50vw;
+}
+
+
+.hero-icons-left{
+    display:flex ;
+    align-items:center;
+    justify-content: center;
+   cursor: pointer;
+    height: 40px;
+    width: 40px;
+    color: var(--color1);
+    background-color: var(--color7);
+    border-radius: 50rem;
+    position: absolute; 
+    left:2rem;
+
+}
+
+.hero-icons-right{
+    display:flex ;
+    align-items:center;
+    justify-content: center;
+    cursor: pointer;
+    height: 40px;
+    width: 40px;
+    color: var(--color1);
+    background-color: var(--color7);
+    border-radius: 50rem;
+    position: absolute; 
+    right:2rem;
+}

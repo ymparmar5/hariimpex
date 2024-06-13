@@ -1,0 +1,192 @@
+#main {
+    display: flex;
+    flex-direction: row;
+    justify-content: center;
+    align-items: center;
+    background-repeat: no-repeat;
+    gap: 2rem;
+    margin: 0rem 5rem;
+}
+
+#contact-top {
+    margin: 1rem 0rem;
+    padding: 4rem 0rem;
+    background-color: var(--color4);
+    font-size: 3rem;
+}
+
+#main h1 {
+    display: block;
+    font-family: var(--font1);
+    color: var(--color1);
+    font-size: 500px;
+}
+
+#contact-info {
+    width: 40%;
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: start;
+    background-color: var(--color4);
+    height: 50rem;
+    padding: 0rem 5rem;
+}
+
+#get-in-touch {
+    padding: 0rem 5rem;
+    width: 60%;
+    background-color: var(--color4);
+    display: flex;
+    justify-content: center;
+    flex-direction: column;
+    align-items: flex-start;
+    height: 50rem;
+}
+
+.title {
+    color: var(--color6);
+    font-size: 34px;
+    font-weight: 500;
+    line-height: 42px;
+    letter-spacing: -0.5px;
+    max-width: 421px;
+}
+
+#form {
+    display: flex;
+    flex-direction: column;
+    width: 100%;
+    margin-bottom: 100px;
+    color: var(--color1);
+}
+
+.input {
+    display: flex;
+    align-items: start;
+    flex-direction: column;
+    justify-content: flex-start;
+    line-height: 10px;
+    color: var(--color6);
+    margin: 30px 0rem;
+}
+
+.input input {
+    height: 2rem;
+    background-color: var(--color5);
+    color: var(--color1);
+    outline: none;
+    width: 100%;
+    margin-top: 1rem;
+}
+
+#submit-btn {
+    display: flex;
+    width: 100%;
+    height: 20px;
+    padding: 20px 13px;
+    justify-content: center;
+    align-items: center;
+    background: var(--color1);
+    cursor: pointer;
+    color: rgb(255, 255, 255);
+    font-size: 19px;
+    letter-spacing: -0.562px;
+}
+
+#submit-btn:hover {
+    background: var(--color6);
+    color: var(--color5);
+}
+
+#map {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    margin: 2rem;
+}
+
+#map-iframe {
+    height: 800px;
+    width: 100%;
+    border: none;
+}
+
+/* Media query for screens with a max width of 360 pixels */
+@media (max-width: 1315px) {
+    #main {
+        flex-direction: column;
+        height: auto;
+        margin: 0rem 5rem;
+        gap: 1rem;
+    }
+
+    #contact-info, #get-in-touch {
+        width: 100%;
+        padding: 0 2rem;
+        height: auto;
+        margin: 1rem 0rem; 
+    }
+
+    #contact-top {
+        font-size: 2rem;
+        padding: 2rem 0;
+    }
+
+    .title {
+        font-size: 24px;
+        line-height: 32px;
+        max-width: 100%;
+    }
+
+    .input {
+        margin: 20px 0;
+    }
+
+    #map {
+        margin: 1rem 2rem;
+    }
+
+    #map-iframe {
+        height: 300px;
+    }
+}
+
+@media (max-width: 550px) {
+    #main {
+        flex-direction: column;
+        height: auto;
+        margin: 0;
+        gap: 1rem;
+    }
+
+    #contact-info, #get-in-touch {
+        width: 100%;
+        padding: 0 2rem;
+        height: auto;
+        margin: 1rem 0rem; 
+    }
+
+    #contact-top {
+        font-size: 2rem;
+        padding: 2rem 0;
+    }
+
+    .title {
+        font-size: 24px;
+        line-height: 32px;
+        max-width: 100%;
+    }
+
+    .input {
+        margin: 20px 0;
+    }
+
+    #map {
+        margin: 1rem 2rem;
+    }
+
+    #map-iframe {
+        height: 300px;
+    }
+}
