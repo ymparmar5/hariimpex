@@ -59,7 +59,8 @@
     display: grid;
     grid-template-columns: repeat(3, 1fr);
     gap: 1rem;
-    justify-items: center;
+    justify-content: space-evenly;
+    justify-items:center;
     width: 100%;
 }
 
@@ -145,6 +146,7 @@
 
 .category-no-product {
     text-align: center;
+    justify-content: center;
 }
 
 .category-no-product img {

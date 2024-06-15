@@ -1,42 +1,98 @@
-#hero{
-display: flex;
-flex-direction: column;
-justify-content: center;
-align-items: center;
-margin-bottom: 4rem;
+#hero {
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  align-items: center;
+  margin-bottom: 4rem;
+  position: relative;
 }
 
-.banner{
-    width: 100vw;
-    height:50vw;
+.banner {
+  width: 100vw;
+  height: 49.5vw;
 }
 
-
-.hero-icons-left{
-    display:flex ;
-    align-items:center;
-    justify-content: center;
-   cursor: pointer;
-    height: 40px;
-    width: 40px;
-    color: var(--color1);
-    background-color: var(--color7);
-    border-radius: 50rem;
-    position: absolute; 
-    left:2rem;
-
+.hero-icons-left, .hero-icons-right {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  cursor: pointer;
+  height: 40px;
+  width: 40px;
+  color: var(--color1);
+  background-color: var(--color7);
+  border-radius: 50rem;
+  position: absolute;
+  top: 50%;
+  transform: translateY(-50%);
 }
 
-.hero-icons-right{
-    display:flex ;
-    align-items:center;
-    justify-content: center;
-    cursor: pointer;
-    height: 40px;
-    width: 40px;
-    color: var(--color1);
-    background-color: var(--color7);
-    border-radius: 50rem;
-    position: absolute; 
-    right:2rem;
+.hero-icons-left {
+  left: 2rem;
+}
+
+.hero-icons-right {
+  right: 2rem;
+}
+
+.hero-bannerSlides {
+  display: none;
+}
+
+.text {
+  color: #f2f2f2;
+  font-size: 15px;
+  padding: 8px 12px;
+  position: absolute;
+  bottom: 8px;
+  width: 100%;
+  text-align: center;
+}
+
+.numbertext {
+  color: #f2f2f2;
+  font-size: 12px;
+  padding: 8px 12px;
+  position: absolute;
+  top: 0;
+}
+
+.dot {
+  height: 15px;
+  width: 15px;
+  margin: 0 2px;
+  background-color: #bbb;
+  border-radius: 50%;
+  display: inline-block;
+  transition: background-color 0.1s ease;
+}
+
+.active {
+  background-color: #717171;
+}
+
+.fade {
+  animation-name: fade;
+  animation-duration: 2s;
+}
+
+@keyframes fade {
+  from {
+    opacity: 0.3;
+  }
+  to {
+    opacity: 1;
+  }
+}
+
+@media only screen and (max-width: 300px) {
+  .text {
+    font-size: 11px;
+  }
+}
+
+/* Slideshow container */
+.slideshow-container {
+  position: relative;
+  margin: auto;
 }

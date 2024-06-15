@@ -65,10 +65,10 @@
 }
 
 .shop-grid {
-    display: grid;
-    grid-template-columns: repeat(3, 1fr);
+    display: flex;
+    flex-wrap: wrap;
     gap: 1rem;
-    justify-items: center;
+    justify-content: space-evenly;
     width: 100%;
 }
 
@@ -81,6 +81,7 @@
 }
 
 .shop-card-content {
+    width: 100%;
     height: 100%;
     border: 1px solid #ccc;
     border-radius: 1rem;
@@ -101,24 +102,25 @@
 
 .shop-product-details {
     text-align: center;
+    padding: 1rem;
 }
 
 .shop-product-brand {
     font-size: 0.75rem;
-    color:var(--color1);
+    color: var(--color1);
     margin: 0;
 }
 
 .shop-product-title {
     font-size: 1.125rem;
     font-weight: 500;
-    color:var(--color1);
+    color: var(--color1);
 }
 
 .shop-product-price {
     font-size: 1.125rem;
     font-weight: 500;
-    color:var(--color1);
+    color: var(--color1);
 }
 
 .shop-button-container {
@@ -128,15 +130,14 @@
 
 .shop-add-button,
 .shop-delete-button {
-        background-color:var(--color1);
+    background-color: var(--color1);
     color: #fff;
-    margin-bottom: 1REM;
+    margin-bottom: 1rem;
     padding: 0.5rem 1rem;
-        cursor: pointer;
+    cursor: pointer;
     font-weight: bold;
     transition: background-color 0.3s;
-    border: 1px solid var(--color1);    
-    
+    border: 1px solid var(--color1);
 }
 
 .shop-delete-button {
@@ -145,9 +146,9 @@
 
 .shop-add-button:hover,
 .shop-delete-button:hover {
-    color:var(--color1);
+    color: var(--color1);
     background-color: var(--color5);
-    border: 1px solid var(--color1);    
+    border: 1px solid var(--color1);
 }
 
 .shop-pagination {
@@ -159,7 +160,6 @@
 
 .shop-pagination button {
     color: var(--color1);
-    
     border: 1px solid var(--color1);
     padding: 0.5rem 1rem;
     cursor: pointer;
@@ -169,8 +169,7 @@
 
 .shop-pagination button:hover {
     color: var(--color5);
-    background-color:var(--color1);
-    
+    background-color: var(--color1);
 }
 
 @media (max-width: 1024px) {
@@ -180,9 +179,6 @@
     .shop-products {
         width: calc(100% - 200px);
     }
-    .shop-grid {
-        grid-template-columns: repeat(3, 1fr);
-    }
 }
 
 @media (max-width: 768px) {
@@ -191,9 +187,6 @@
     }
     .shop-products {
         width: 100%;
-    }
-    .shop-grid {
-        grid-template-columns: repeat(2, 1fr);
     }
 }
 
