@@ -17,11 +17,11 @@
   align-items: center;
   justify-content: center;
   cursor: pointer;
-  height: 40px;
-  width: 40px;
+    height: 3.6vh;
+    width: 2.4vw;
   color: var(--color1);
   background-color: var(--color7);
-  border-radius: 50rem;
+  border-radius: 1400px;
   position: absolute;
   top: 50%;
   transform: translateY(-50%);
@@ -61,14 +61,16 @@
   height: 15px;
   width: 15px;
   margin: 0 2px;
-  background-color: #bbb;
+  background-color: var(--color1);
+  border: 1px solid var(--color1);
   border-radius: 50%;
   display: inline-block;
   transition: background-color 0.1s ease;
 }
 
 .active {
-  background-color: #717171;
+  
+  background-color: var(--color6);
 }
 
 .fade {
@@ -85,12 +87,30 @@
   }
 }
 
-@media only screen and (max-width: 300px) {
+@media only screen and (max-width: 360px) {
   .text {
     font-size: 11px;
   }
+  .hero-icons-left, .hero-icons-right {
+      height: 2.8vh;
+      width: 8.4vw;}
+      .banner {
+        width: 100vw;
+        height: 65vw;
+      }
 }
-
+@media only screen and (max-width:860px) {
+  .text {
+    font-size: 11px;
+  }
+  .hero-icons-left, .hero-icons-right {
+      height: 2.8vh;
+      width: 8.4vw;}
+      .banner {
+        width: 100vw;
+        height: 65vw;
+      }
+}
 /* Slideshow container */
 .slideshow-container {
   position: relative;

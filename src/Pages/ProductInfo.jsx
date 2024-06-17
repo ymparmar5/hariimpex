@@ -78,7 +78,7 @@ const ProductInfo = () => {
     }
 
     return (
-        <div className="main-content min-h-screen">
+   
             <section className="product-info-section">
                 <div className="product-info-container">
                     {product ? (
@@ -130,7 +130,6 @@ const ProductInfo = () => {
                     )}
                 </div>
             </section>
-        </div>  
     );
 };
 

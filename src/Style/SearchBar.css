@@ -12,13 +12,14 @@
   }
   
   .search-input {
-    margin: 0rem 1rem ;
+
+    margin: 0rem -2rem ;
     border: none;
-    border-radius: 20px;
-    padding: 10px 40px 10px 10px;
-    width: 400px;
-    outline: 0.5px solid var(--color1) ;
-      }
+    padding: 8px 35px 8px  8px;
+    width: 20vw;  
+    background-color:transparent  ;
+    outline: 0.5px solid var(--color1);
+    }
   
 
   
@@ -73,4 +74,25 @@
   .no-results-image {
     width: 50px;
     height: 50px;
+  }
+  @media (max-width: 1200px) {
+    .search-input {
+
+      margin: 0rem -2rem ;
+      width: 30vw;
+      }
+      .dropdown-container {
+               width: 150%;
+      }
+    
+  }
+  @media (max-width: 800px) {
+    .search-input {
+      padding: 6px 30px 6px  6px;
+      margin: 0rem -2rem ;
+      width: 35vw;
+      }
+      .dropdown-container {  
+        width: 150%;
+      }
   }

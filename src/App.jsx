@@ -24,6 +24,7 @@ import Signup from "./Pages/SIgnup";
 import SignIN from "./Pages/SignIn";
 import TermsAndConditions from "./Pages/TermsAndConditions";
 import PrivacyPolicy from "./Pages/PrivacyPolicy";
+import BuyNow from "./Components/BuyNow";
 
 const App = () => {
 
@@ -47,6 +48,7 @@ const App = () => {
           <Route path="/contact" element={<Contact />} />
           <Route path="/about" element={<About />} />
           <Route path="/cart" element={<Cart />} />
+          <Route path="/buy-now" element={<BuyNow/>} />
           <Route path="/sign-up" element={<Signup />} />
           <Route path="/sign-in" element={<SignIN />} />
           <Route path="/privacy" element={<PrivacyPolicy />} />

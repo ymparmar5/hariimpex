@@ -5,7 +5,7 @@ import {
     DialogBody,
 } from "@material-tailwind/react";
 import { useState } from "react";
-
+import "../Style/Buynow.css";
 const BuyNow = ({ addressInfo, setAddressInfo, buyNowFunction }) => {
     const [open, setOpen] = useState(false);
 
@@ -15,11 +15,11 @@ const BuyNow = ({ addressInfo, setAddressInfo, buyNowFunction }) => {
             <Button
                 type="button"
                 onClick={handleOpen}
-                className="w-full px-4 py-3 text-center text-gray-100 bg-indigo-600 border border-transparent dark:border-gray-700 hover:border-indigo-500 hover:text-indigo-700 hover:bg-indigo-100 rounded-xl"
+                className="btn-custom"
             >
                 Buy now
             </Button>
-            <Dialog open={open} handler={handleOpen} className=" bg-indigo-50">
+            <Dialog open={open} handler={handleOpen} className="dialog-custom">
                 <DialogBody className="">
                     <div className="mb-3">
                         <input
@@ -33,7 +33,7 @@ const BuyNow = ({ addressInfo, setAddressInfo, buyNowFunction }) => {
                                 })
                             }}
                             placeholder='Enter your name'
-                            className='bg-indigo-50 border border-indigo-200 px-2 py-2 w-full rounded-md outline-none text-indigo-600 placeholder-indigo-300'
+                            className='input-custom'
                         />
                     </div>
                     <div className="mb-3">
@@ -48,7 +48,7 @@ const BuyNow = ({ addressInfo, setAddressInfo, buyNowFunction }) => {
                                 })
                             }}
                             placeholder='Enter your address'
-                            className='bg-indigo-50 border border-indigo-200 px-2 py-2 w-full rounded-md outline-none text-indigo-600 placeholder-indigo-300'
+                            className='input-custom'
                         />
                     </div>
 
@@ -64,7 +64,7 @@ const BuyNow = ({ addressInfo, setAddressInfo, buyNowFunction }) => {
                                 })
                             }}
                             placeholder='Enter your pincode'
-                            className='bg-indigo-50 border border-indigo-200 px-2 py-2 w-full rounded-md outline-none text-indigo-600 text-indigo-600 placeholder-indigo-300'
+                            className='input-custom'
                         />
                     </div>
 
@@ -80,19 +80,18 @@ const BuyNow = ({ addressInfo, setAddressInfo, buyNowFunction }) => {
                                 })
                             }}
                             placeholder='Enter your mobileNumber'
-                            className='bg-indigo-50 border border-indigo-200 px-2 py-2 w-full rounded-md outline-none text-indigo-600 placeholder-indigo-300'
+                            className='input-custom'
                         />
                     </div>
 
                     <div className="">
                         <Button
-
                             type="button"
                             onClick={() => {
                                 handleOpen();
                                 buyNowFunction();
                             }}
-                            className="w-full px-4 py-3 text-center text-gray-100 bg-indigo-600 border border-transparent dark:border-gray-700 rounded-lg"
+                            className="btn-custom"
                         >
                             Buy now
                         </Button>

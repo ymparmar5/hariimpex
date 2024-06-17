@@ -12,7 +12,6 @@
     background-color: #ffffff;
     padding: 20px;
     border: 1px solid #e2e8f0;
-    border-radius: 10px;
     box-shadow: 0 4px 6px rgba(0, 0, 0, 0.1);
     width: 800px;
 }
@@ -24,7 +23,6 @@
 
 .add-product-form-header h2 {
     font-size: 24px;
-    color: #4f46e5;
     font-weight: bold;
 }
 
@@ -45,8 +43,7 @@
     width: 100%;
     padding: 10px;
     border: 1px solid #cbd5e0;
-    border-radius: 5px;
-    outline: none;
+        outline: none;
     color: #4a5568;
 }
 
@@ -67,17 +64,18 @@
 .add-product-submit-btn {
     width: 100%;
     padding: 10px;
-    background-color: #4f46e5;
+    background-color:var(--color1);
     color: #ffffff;
     border: none;
-    border-radius: 5px;
+    border: 1px solid var(--color1);
     font-weight: bold;
     cursor: pointer;
     transition: background-color 0.3s;
 }
 
 .add-product-submit-btn:hover {
-    background-color: #4338ca;
+    background-color:var(--color5);
+    color: var(--color1);
 }
 
 .loader {

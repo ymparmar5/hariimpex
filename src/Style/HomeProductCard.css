@@ -51,7 +51,6 @@
 .home-product-card-content {
     height: 100%;
     border: 1px solid #ccc;
-    border-radius: 10px;
     overflow: hidden;
     box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
     cursor: pointer;
@@ -123,11 +122,11 @@
 
 @media (max-width: 768px) {
     .home-product-card-item {
-        max-width: 50%;
+        max-width: 100%;
     }
 }
 
-@media (max-width: 480px) {
+@media (max-width: 360px) {
     .home-product-card-item {
         max-width: 100%;
     }
