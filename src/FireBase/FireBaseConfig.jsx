@@ -7,8 +7,9 @@ import { getAuth } from 'firebase/auth';
 // https://firebase.google.com/docs/web/setup#available-libraries
 
 // Your web app's Firebase configuration
+
 const firebaseConfig = {
-  apiKey: "AIzaSyCxJPmDC5mgFNCoNRRmMhKVL9Pa6K2hjv4",
+  apiKey: import.meta.env.VITE_FIREBASE_TOKEN,
   authDomain: "hari-impex5.firebaseapp.com",
   projectId: "hari-impex5",
   storageBucket: "hari-impex5.appspot.com",
