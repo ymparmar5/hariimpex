@@ -65,7 +65,7 @@ const UserDashboard = () => {
                                 <div key={index}>
                                     {order.cartItems.map((item, index) => {
                                         // console.log('item', item);
-                                        const { id, date, quantity, price, title, productImageUrl, category } = item
+                                        const { id, date, quantity, price, title, imgurl1, category } = item
                                         // console.log('order', order)
                                         const { status } = order
                                         return (
@@ -105,7 +105,7 @@ const UserDashboard = () => {
                                                                     <div className="flex-shrink-0">
                                                                         <img
                                                                             className="h-40 w-40 rounded-lg border border-gray-200 object-contain"
-                                                                            src={productImageUrl}
+                                                                            src={imgurl1}
                                                                             alt="img"
                                                                         />
                                                                     </div>

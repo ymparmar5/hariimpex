@@ -38,11 +38,11 @@ const HomeProductCard = () => {
                     <div className="home-product-loader-container">{loading && <Loader />}</div>
                     <div className="home-product-grid">
                         {getAllProduct.slice(0, 8).map((item, index) => {
-                            const { id, title, price, productImageUrl } = item;
+                            const { id, title, price, imgurl1 } = item;
                             return (
                                 <div key={index} className="home-product-card-item">
                                     <div className="home-product-card-content" onClick={() => navigate(`/productinfo/${id}`)}>
-                                        <img src={productImageUrl} alt="product" className="home-product-image" />
+                                        <img src={imgurl1} alt="product" className="home-product-image" />
                                         <div className="home-product-details">
                                             <h2 className="home-product-brand">Hari impex</h2>
                                             <h1 className="home-product-title">{title.substring(0, 25)}</h1>

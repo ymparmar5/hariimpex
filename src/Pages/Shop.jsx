@@ -86,7 +86,7 @@ const Shop = () => {
                             currentProducts.map((item, index) => (
                                 <div key={index} className="shop-card">
                                     <div className="shop-card-content" onClick={() => navigate(`/productinfo/${item.id}`)}>
-                                        <img src={item.productImageUrl} alt="product" className="shop-product-image" />
+                                        <img src={item.imgurl1} alt="product" className="shop-product-image" />
                                         <div className="shop-product-details">
                                             <h2 className="shop-product-brand">{item.category}</h2>
                                             <h1 className="shop-product-title">{item.title.substring(0, 25)}</h1>

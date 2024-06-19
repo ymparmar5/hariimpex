@@ -23,7 +23,7 @@ const OrderDetail = () => {
                                     <tr key={index}>
                                         <td>{index + 1}</td>
                                         <td>{item.id}</td>
-                                        <td><img src={item.productImageUrl} alt="img" /></td>
+                                        <td><img src={item.imgurl1} alt="img" /></td>
                                         <td>{item.title}</td>
                                         <td>{item.category}</td>
                                         <td>₹{item.price}</td>

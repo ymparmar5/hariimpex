@@ -6,20 +6,15 @@ import { fireDB } from "../FireBase/FireBaseConfig";
 import toast from 'react-hot-toast';
 
 function MyState({ children }) {
-    // Loading State 
     const [loading, setLoading] = useState(false);
-
-    // Products State
     const [getAllProduct, setGetAllProduct] = useState([]);
+    const [getAllOrder, setGetAllOrder] = useState([]);
+    const [getAllUser, setGetAllUser] = useState([]);
 
-    // Fetch Products Function
-    const getAllProductFunction = async () => {
+    const getAllProductFunction = () => {
         setLoading(true);
         try {
-            const q = query(
-                collection(fireDB, "products"),
-                orderBy('time')
-            );
+            const q = query(collection(fireDB, "products"), orderBy('time'));
             const unsubscribe = onSnapshot(q, (querySnapshot) => {
                 let productArray = [];
                 querySnapshot.forEach((doc) => {
@@ -27,21 +22,15 @@ function MyState({ children }) {
                 });
                 setGetAllProduct(productArray);
                 setLoading(false);
-                // Log the products to the console
-                console.log('Fetched Products:', productArray);
             });
-            return () => unsubscribe();
+            return unsubscribe;
         } catch (error) {
             console.error("Error fetching products: ", error);
             setLoading(false);
         }
-    }
+    };
 
-    // Order State 
-    const [getAllOrder, setGetAllOrder] = useState([]);
-
-    // Fetch Orders Function
-    const getAllOrderFunction = async () => {
+    const getAllOrderFunction = () => {
         setLoading(true);
         try {
             const q = query(collection(fireDB, 'order'), orderBy('time'));
@@ -53,32 +42,27 @@ function MyState({ children }) {
                 setGetAllOrder(orderArray);
                 setLoading(false);
             });
-            return () => unsubscribe();
+            return unsubscribe;
         } catch (error) {
             console.error('Error fetching orders:', error);
             setLoading(false);
         }
     };
 
-    // Delete Order Function
     const OrderDelete = async (id) => {
         setLoading(true);
         try {
             await deleteDoc(doc(fireDB, 'order', id));
             toast.success('Order Deleted successfully');
             getAllOrderFunction();
-            setLoading(false);
         } catch (error) {
             console.error('Error deleting order:', error);
+        } finally {
             setLoading(false);
         }
     };
 
-    // User State 
-    const [getAllUser, setGetAllUser] = useState([]);
-
-    // Fetch Users Function
-    const getAllUserFunction = async () => {
+    const getAllUserFunction = () => {
         setLoading(true);
         try {
             const q = query(collection(fireDB, 'user'), orderBy('time'));
@@ -90,7 +74,7 @@ function MyState({ children }) {
                 setGetAllUser(userArray);
                 setLoading(false);
             });
-            return () => unsubscribe();
+            return unsubscribe;
         } catch (error) {
             console.error('Error fetching users:', error);
             setLoading(false);
@@ -98,9 +82,15 @@ function MyState({ children }) {
     };
 
     useEffect(() => {
-        getAllProductFunction();
-        getAllOrderFunction();
-        getAllUserFunction();
+        const unsubscribeProducts = getAllProductFunction();
+        const unsubscribeOrders = getAllOrderFunction();
+        const unsubscribeUsers = getAllUserFunction();
+
+        return () => {
+            if (unsubscribeProducts) unsubscribeProducts();
+            if (unsubscribeOrders) unsubscribeOrders();
+            if (unsubscribeUsers) unsubscribeUsers();
+        };
     }, []);
 
     return (

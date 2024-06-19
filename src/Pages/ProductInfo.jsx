@@ -24,9 +24,9 @@ const ProductInfo = () => {
         try {
             const productTemp = await getDoc(doc(fireDB, "products", id));
             if (productTemp.exists()) {
-                console.log("Product Data: ", productTemp.data()); // Debugging log
+                // console.log("Product Data: ", productTemp.data()); // Debugging log
                 setProduct({ ...productTemp.data(), id: productTemp.id });
-                setMainImage(productTemp.data().productImageUrl); // Set main image initially
+                setMainImage(productTemp.data().imgurl1); // Set main image initially
             } else {
                 console.log("No such document!");
             }

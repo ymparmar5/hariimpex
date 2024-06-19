@@ -28,7 +28,7 @@ const UpdateProductPage = () => {
         title: "",
         price: "",
         salePrice: "",
-        productImageUrl: "",
+        imgurl1: "",
         imgurl1: "",
         imgurl2: "",
         imgurl3: "",
@@ -120,9 +120,9 @@ const UpdateProductPage = () => {
                     <div className="add-product-form-group">
                         <input
                             type="text"
-                            name="productImageUrl"
-                            value={product.productImageUrl}
-                            onChange={(e) => setProduct({ ...product, productImageUrl: e.target.value })}
+                            name="imgurl1"
+                            value={product.imgurl1}
+                            onChange={(e) => setProduct({ ...product, imgurl1: e.target.value })}
                             placeholder="Product Image Url"
                         />
                     </div>

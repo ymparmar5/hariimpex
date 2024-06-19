@@ -34,7 +34,7 @@ const SearchBar = () => {
                                 onClick={() => navigate(`/productinfo/${item.id}`)}
                             >
                                 <div className="item-content">
-                                    <img className="item-image" src={item.productImageUrl} alt="" />
+                                    <img className="item-image" src={item.imgurl1} alt="" />
                                     {item.title}
                                 </div>
                             </div>

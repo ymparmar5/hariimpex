@@ -117,13 +117,13 @@
                             <ul className="cart-items-list">
                                 {cartItems.length > 0 ? (
                                     cartItems.map((item, index) => {
-                                        const { id, title, price, productImageUrl, quantity, category } = item;
+                                        const { id, title, price, imgurl1, quantity, category } = item;
                                         return (
                                             <div key={index} className="cart-item">
                                                 <li className="cart-item-detail">
                                                     <div className="cart-item-image">
                                                         <img
-                                                            src={productImageUrl}
+                                                            src={imgurl1}
                                                             alt="img"
                                                             className="image"
                                                         />
