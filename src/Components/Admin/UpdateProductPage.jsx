@@ -29,7 +29,6 @@ const UpdateProductPage = () => {
         price: "",
         salePrice: "",
         imgurl1: "",
-        imgurl1: "",
         imgurl2: "",
         imgurl3: "",
         imgurl4: "",
