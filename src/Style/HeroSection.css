@@ -9,7 +9,8 @@
 
 .banner {
   width: 100vw;
-  height: 49.5vw;
+  height: 45vw;
+  object-fit: fill;
 }
 
 .hero-icons-left, .hero-icons-right {
