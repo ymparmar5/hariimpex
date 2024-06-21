@@ -45,17 +45,17 @@ const HeroSection = () => {
       <div className="slideshow-container">
         <div className="hero-bannerSlides fade" style={{ display: 'block' }}>
           <img className="banner" src="./Hero.jpeg" alt="Nature" />
-          <div className="text">Caption Text</div>
+          {/* <div className="text">Caption Text</div> */}
         </div>
 
         <div className="hero-bannerSlides fade">
-          <img className="banner" src="./Hero.jpeg"  alt="Snow" />
-          <div className="text">Caption Two</div>
+          <img className="banner" src="./hero10.jpeg"  alt="Snow" />
+          {/* <div className="text">Caption Two</div> */}
         </div>
 
         <div className="hero-bannerSlides fade">
-          <img className="banner" src="./Hero.jpeg" alt="Mountains" />
-          <div className="text">Caption Three</div>
+          <img className="banner" src="./hero9.jpeg" alt="Mountains" />
+          {/* <div className="text">Caption Three</div> */}
         </div>
       </div>
 

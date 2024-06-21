@@ -3,12 +3,12 @@
     import "../Style/Category.css";
 
     const category = [
-        { image: 'pump-6.jpg', name: 'Standee Display' },
-        { image: './92-mm-fam-grill.jpg', name: 'Cooling Accs' },
-        { image: './images-6.jpeg', name: 'Water Block' },
-        { image: './led-display.jpg', name: 'LED-Bord Profiles' },
-        { image: './pipe-4.jpg', name: 'Condenser ' },
-        { image: './80-40-2.jpeg', name: 'Aquarium Chiller' }
+        { image: 'https://nevonexpress.in/wp-content/uploads/2022/11/32-inch-LCD-Standee-display-5-min.jpg', name: 'Standee Display' },
+        { image: 'https://hariimpex.in/wp-content/uploads/2022/08/fan-plus-grill-combo-100x100.jpg', name: 'Cooling Accs' },
+        { image: 'https://hariimpex.in/wp-content/uploads/2022/08/IMG_20210521_201225.jpg', name: 'Water Block' },
+        { image: 'https://hariimpex.in/wp-content/uploads/2022/08/profile-1.jpg', name: 'LED-Bord Profiles' },
+        { image: 'https://hariimpex.in/wp-content/uploads/2022/08/16-16-1-1.png', name: 'Condenser ' },
+        { image: 'https://hariimpex.in/wp-content/uploads/2023/04/IMG-20220419-WA0015.jpg', name: 'Aquarium Chiller' }
     ];
 
     const Category = () => {
