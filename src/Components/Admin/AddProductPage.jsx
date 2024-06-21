@@ -30,6 +30,7 @@ const predefinedProducts = [
     category: "Water Block",
     stock: true,
     date: "Jun 14, 2024",
+    imgurl1: "https://hariimpex.in/wp-content/uploads/2023/04/IMG-20220419-WA0015.jpg",
     imgurl2: "",
     imgurl3: "",
     imgurl4: "",
