@@ -21,17 +21,17 @@ const Footer = () => {
         </h3>
         <ul>
 
-          <Link href={"/privacy" } >
+          <Link to={"/privacy" } >
           <li>Privacy policy</li>
           </Link>
-          <Link href={"/tandc"} ><li>Terms and condition</li>
+          <Link to={"/tandc"} ><li>Terms and condition</li>
           </Link>
-          <Link href={"/about"}>   <li>About</li>
+          <Link to={"/about"}>   <li>About</li>
           </Link>
-          <Link href={"./shop"}>
+          <Link to={"./shop"}>
           <li  >Manufactures</li>
           </Link>
-          <Link href={"./user-dashboard"} >
+          <Link to={"./user-dashboard"} >
           <li>Track orders</li>
           </Link>
        
