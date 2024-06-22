@@ -37,7 +37,6 @@ const App = () => {
       <Header/>
 
         <ScrollTop />
-        <Switch>
         <Routes>
           <Route exact path="/" element={<Home />} />
           <Route path="/productinfo/:id" element={<ProductInfo />} />
@@ -76,7 +75,6 @@ const App = () => {
 
           <Route path="/error" element={<Error />} />
         </Routes>
-            </Switch>
         <Footer />
         <Toaster />
 
