@@ -33,10 +33,6 @@ const App = () => {
   return (
 
     <MyState >
-
-
-
-
       <BrowserRouter>
       <Header/>
 
@@ -83,7 +79,7 @@ const App = () => {
             </Switch>
         <Footer />
         <Toaster />
-        
+
       </BrowserRouter>
     </MyState>
   );
