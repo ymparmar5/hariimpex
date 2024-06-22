@@ -25,6 +25,7 @@ import SignIN from "./Pages/SignIn";
 import TermsAndConditions from "./Pages/TermsAndConditions";
 import PrivacyPolicy from "./Pages/PrivacyPolicy";
 import BuyNow from "./Components/BuyNow";
+import { Switch } from "@material-tailwind/react";
 
 const App = () => {
 
@@ -40,8 +41,9 @@ const App = () => {
       <Header/>
 
         <ScrollTop />
+        <Switch>
         <Routes>
-          <Route path="/" element={<Home />} />
+          <Route exact path="/" element={<Home />} />
           <Route path="/productinfo/:id" element={<ProductInfo />} />
           <Route path="/shop" element={<Shop />} />
           <Route path="/category/:categoryname" element={<CategoryPage />} /> 
@@ -78,8 +80,10 @@ const App = () => {
 
           <Route path="/error" element={<Error />} />
         </Routes>
+            </Switch>
         <Footer />
         <Toaster />
+        
       </BrowserRouter>
     </MyState>
   );
