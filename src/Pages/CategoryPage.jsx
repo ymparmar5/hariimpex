@@ -72,7 +72,7 @@ const CategoryPage = () => {
                                 filterProduct.map((item, index) => (
                                     <div key={index} className="category-card">
                                         <div className="category-card-content" onClick={() => navigate(`/productinfo/${item.id}`)}>
-                                            <img src={item.imgurl1} alt="product" className="category-product-image" />
+                                            <img src={`../public/${item.imgurl1}`}  alt="product" className="category-product-image" />
                                             <div className="category-product-details">
                                                 <h2 className="category-product-brand">{item.category}</h2>
                                                 <h1 className="category-product-title">{item.title.substring(0, 25)}</h1>

@@ -3,12 +3,12 @@
     import "../Style/Category.css";
 
     const category = [
-        { image: 'https://nevonexpress.in/wp-content/uploads/2022/11/32-inch-LCD-Standee-display-5-min.jpg', name: 'Standee Display' },
-        { image: 'https://hariimpex.in/wp-content/uploads/2022/08/fan-plus-grill-combo-100x100.jpg', name: 'Cooling Accs' },
-        { image: 'https://hariimpex.in/wp-content/uploads/2022/08/IMG_20210521_201225.jpg', name: 'Water Block' },
-        { image: 'https://hariimpex.in/wp-content/uploads/2022/08/profile-1.jpg', name: 'LED-Bord Profiles' },
-        { image: 'https://hariimpex.in/wp-content/uploads/2022/08/16-16-1-1.png', name: 'Condenser ' },
-        { image: 'https://hariimpex.in/wp-content/uploads/2023/04/IMG-20220419-WA0015.jpg', name: 'Aquarium Chiller' }
+        { image: 'hero1.jpg', name: 'Standee Display' },
+        { image: 'fan-plus-grill-2.jpeg', name: 'Cooling Accs' },
+        { image: 'IMG_20210521_201225.jpg', name: 'Water Block' },
+        { image: 'led-display.jpg', name: 'LED-Bord Profiles' },
+        { image: '16-16-1.png', name: 'Condenser ' },
+        { image: 'IMG-20220419-WA0015.jpg', name: 'Aquarium Chiller' }
     ];
 
     const Category = () => {
@@ -76,7 +76,8 @@
                 {category.map((item, index) => (
                     <div key={index} onClick={() => navigate(`/category/${item.name}`)} className="category-container">
                         <div className="category-imgs" >
-                            <img src={item.image} alt={item.name} />
+                            <img src = {`../public/${item.image}`} alt={item.name} />
+                            
                         </div>
                         <div className="category-imgs-hover"></div>
                         <h1 className='category-names'>{item.name}</h1>
@@ -85,5 +86,4 @@
             </div>
         );
     }
-
     export default Category;
