@@ -76,7 +76,7 @@
                 {category.map((item, index) => (
                     <div key={index} onClick={() => navigate(`/category/${item.name}`)} className="category-container">
                         <div className="category-imgs" >
-                            <img src = {`../public/${item.image}`} alt={item.name} />
+                            <img src = {item.image} alt={item.name} />
                             
                         </div>
                         <div className="category-imgs-hover"></div>
