@@ -26,6 +26,9 @@ import TermsAndConditions from "./Pages/TermsAndConditions";
 import PrivacyPolicy from "./Pages/PrivacyPolicy";
 import BuyNow from "./Components/BuyNow";
 import { Switch } from "@material-tailwind/react";
+import Fail from "./Components/Fail";
+import Success from "./Components/Success";
+import CallBack from "./Components/CallBack";
 
 const App = () => {
 
@@ -48,6 +51,12 @@ const App = () => {
           <Route path="/buy-now" element={<BuyNow/>} />
           <Route path="/sign-up" element={<Signup />} />
           <Route path="/sign-in" element={<SignIN />} />
+          
+          <Route path="/fail" element={<Fail/>} />
+          <Route path="/success" element={<Success />} />
+          <Route path="/callback" element={<CallBack />} />
+
+
           <Route path="/privacy" element={<PrivacyPolicy />} />
           <Route path="/tandc" element={<TermsAndConditions />} />
 

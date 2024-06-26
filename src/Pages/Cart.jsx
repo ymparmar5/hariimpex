@@ -1,13 +1,13 @@
-    import React, { useEffect, useState } from 'react';
+    import React, { useEffect } from 'react';
     import { useDispatch, useSelector } from 'react-redux';
-    import { Trash } from 'lucide-react';
+    import { Trash, User } from 'lucide-react';
     import { decrementQuantity, deleteFromCart, incrementQuantity } from '../Redux/CartSlice';
-    import { fireDB } from '../FireBase/FireBaseConfig';
+    
     import toast from 'react-hot-toast';
-    import BuyNow from '../Components/BuyNow';
-    import { Timestamp, addDoc, collection } from 'firebase/firestore';
+   
     import { useNavigate } from 'react-router-dom';
     import '../Style/Cart.css';
+
 
     const Cart = () => {
         const cartItems = useSelector((state) => state.cart);
@@ -17,6 +17,7 @@
         const deleteCart = (item) => {
             dispatch(deleteFromCart(item));
             toast.success("Deleted from cart");
+            
         };
 
         const handleIncrement = (id) => {
@@ -34,77 +35,7 @@
             localStorage.setItem('cart', JSON.stringify(cartItems));
         }, [cartItems]);
 
-        const user = JSON.parse(localStorage.getItem('users'));
-
-        const [addressInfo, setAddressInfo] = useState({
-            name: "",
-            address: "",
-            pincode: "",
-            mobileNumber: "",
-            time: Timestamp.now(),
-            date: new Date().toLocaleString(
-                "en-US",
-                {
-                    month: "short",
-                    day: "2-digit",
-                    year: "numeric",
-                }
-            )
-        });
-
-        const buyNowFunction = async () => {
-            if (!user) {
-                return navigate('/sign-in');
-            }
-
-            if (addressInfo.name === "" || addressInfo.address === "" || addressInfo.pincode === "" || addressInfo.mobileNumber === "") {
-                return toast.error("All fields are required");
-            }
-
-            const orderInfo = {
-                cartItems,
-                addressInfo: {
-                    ...addressInfo,
-                    time: addressInfo.time.toDate().toString()
-                },
-                email: user.email,
-                userid: user.uid,
-                status: "confirmed",
-                time: Timestamp.now().toDate().toString(),
-                date: new Date().toLocaleString(
-                    "en-US",
-                    {
-                        month: "short",
-                        day: "2-digit",
-                        year: "numeric",
-                    }
-                )
-            };
-
-            try {
-                const orderRef = collection(fireDB, 'order');
-                await addDoc(orderRef, orderInfo);
-                setAddressInfo({
-                    name: "",
-                    address: "",
-                    pincode: "",
-                    mobileNumber: "",
-                    time: Timestamp.now(),
-                    date: new Date().toLocaleString(
-                        "en-US",
-                        {
-                            month: "short",
-                            day: "2-digit",
-                            year: "numeric",
-                        }
-                    )
-                });
-                toast.success("Order Placed Successfully");
-            } catch (error) {
-                console.log(error);
-            }
-        };
-
+        
         return (
             <div className="cart-main-content">
                 <div className="cart-container">
@@ -186,12 +117,10 @@
                                     </div>
                                 </dl>
                                 <div className="buy-now-container">
-                                    {user ? (
-                                        <BuyNow
-                                            addressInfo={addressInfo}
-                                            setAddressInfo={setAddressInfo}
-                                            buyNowFunction={buyNowFunction}
-                                        />
+
+                                    {User ? (
+                                        <button onClick={() => navigate('/buy-now')} className="login-to-buy-button">BuyNow</button>
+                                        
                                     ) : (
                                         <button onClick={() => navigate('/sign-in')} className="login-to-buy-button">Login to Buy</button>
                                     )}
