@@ -47,9 +47,9 @@ const BuyNow = () => {
 
     const checksum1 = sha + "###" + "1";
 
-    const finalChecksum = `${checksum1}`;
+    const checksum = `${checksum1}`;
 
-    const data = { base64, finalChecksum };
+    const data = { base64, checksum };
 
     const backendUrl = import.meta.env.VITE_BACKEND_URL;
     const res = await axios.post(`${backendUrl}/checkout`, data);
