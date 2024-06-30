@@ -113,7 +113,7 @@ const BuyNow = () => {
               <input
                 id="Amount"
                 name="amount"
-                value="10"
+                value="1"
                 autoComplete="Amount"
                 onChange={(e) => handleFormData(e)}
                 required=""
