@@ -1,37 +1,63 @@
-.btn-custom {
+
+  
+  .buynow-container {
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
+    padding: 3rem 1.5rem;
+    background-color: #f9fafb; /* Gray 50 */
+  }
+  
+  .buynow-form-container {
+    background-color: #fff;
+    padding: 2rem;
+    border-radius: 0.5rem;
+    box-shadow: 0 4px 6px rgba(0, 0, 0, 0.1);
     width: 100%;
-    padding: 0.75rem 1rem;
-    text-align: center;
-    color: var(--color5);
-    background-color: var(--color1);
-    border: 1px solid transparent;
-    transition: all 0.3s ease;
-    border-radius: 0rem;
-}
-
-.btn-custom:hover {
-    border-color: var(--color1);
+    max-width: 500px;
+  }
+  
+  .buynow-form-group {
+    margin-bottom: 1rem;
+  }
+  
+  .buynow-label {
+    display: block;
+    align-self: start;
+    align-items: start;
+    font-size: 0.875rem;
+    font-weight: 500;
     color: var(--color1);
-    background-color: var(--color4);
-}
-
-.dialog-custom {
-    background-color: transparent;
-    color: var(--color1);
-    border-radius: 0rem;
-}
-
-.input-custom {
-    background-color: var(--color3);
-    border: 1px solid var(--color5);
-    padding: 0.5rem;
+    margin-bottom: 0.25rem;
+  }
+  
+  .buynow-input {
+    display: block;
     width: 100%;
-    outline:  var(--color5);
+    border: 1px solid var(--color1);
+    padding: 0.rem 0.   rem;
     color: var(--color1);
-}
-
-.input-custom::placeholder {
-    outline:  var(--color1);
-    color: var(--color4);
-    background-color: var(--color1);
-}
+    background-color: #fff;
+    box-shadow: 0 1px 2px rgba(0, 0, 0, 0.05);
+    font-size: 0.875rem;
+  }
+  
+  .buynow-button {
+    display: flex;
+    width: 100%;
+    justify-content: center;
+    color: white;
+    background-color:var(--color1);
+    padding: 0.75rem;
+    font-size: 0.875rem;
+    font-weight: 600;
+    transition: background-color 0.2s;
+    cursor: pointer;
+  }
+  
+  .buynow-button:hover {
+    background-color: white;
+    color: var(--color1);
+  }
+  
