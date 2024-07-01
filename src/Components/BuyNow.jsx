@@ -26,7 +26,7 @@ const BuyNow = () => {
       merchantTransactionId: uuidv4(),
       merchantUserId: "test1314", //userId
       amount: 100, //from cart total
-      redirectUrl: "https://webhook.site/redirect-url", // your url
+      redirectUrl: "https://hariimpex.in/success", // your url
       redirectMode: "REDIRECT",
       callbackUrl: "https://webhook.site/2e6bdb93-1f2e-40f5-bf47-93a466f953c1", //not needed
       mobileNumber: "8153843002", //cart
