@@ -120,7 +120,6 @@ const ProductInfo = () => {
                                         ) : (
                                             <button onClick={() => addCart(product)} className="add-cart-btn">Add to cart</button>
                                         )}
-                                        <button className="buy-now-btn">Buy Now</button>
                                     </div>
                                 </div>
                             </div>

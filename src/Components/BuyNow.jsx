@@ -24,17 +24,23 @@ const BuyNow = () => {
   const makePayment = async (e) => {
     e.preventDefault();
 
+    // Check if all required fields are filled
+    if (!data.name || !data.mobile || !data.address || !data.pincode) {
+      toast.error("Please fill out all required fields.");
+      return;
+    }
+
     const orderId = uuidv4();
 
     const payload = {
-      merchantId: "HARIIMPEXONLINE",
+      merchantId: import.meta.env.VITE_MERCHANT_ID,
       merchantTransactionId: orderId,
       merchantUserId: "test1314",
-      amount: 100,
+      amount: cartTotal, // Use cartTotal here
       redirectUrl: `https://hariimpex.in/success?orderId=${orderId}`,
       redirectMode: "REDIRECT",
       callbackUrl: `https://hariimpex.in/2e6bdb93-1f2e-40f5-bf47-93a466f953c1?orderId=${orderId}`,
-      mobileNumber: "9909097033",
+      mobileNumber: data.mobile,
       paymentInstrument: {
         type: "PAY_PAGE",
       },
@@ -63,15 +69,15 @@ const BuyNow = () => {
     const url = `${base64}/pg/v1/pay${saltKey}`;
 
     const sha = await sha256(url);
-    const checksum =`${sha}###${saltIndex}`;
+    const checksum = `${sha}###${saltIndex}`;
     const paymentData = { base64, checksum };
 
     try {
       const backendUrl = import.meta.env.VITE_BACKEND_URL;
-      console.log('payload', payload)
-      console.log("11",paymentData);
+      console.log("payload", payload);
+      console.log("11", paymentData);
       const res = await axios.post(`${backendUrl}/checkout`, paymentData);
-      console.log("22",res);
+      console.log("22", res);
       if (res.data && res.data.data.instrumentResponse.redirectInfo.url) {
         window.location.href =
           res.data.data.instrumentResponse.redirectInfo.url;
@@ -79,11 +85,11 @@ const BuyNow = () => {
         toast.error("Failed to initiate payment. Please try again.");
       }
     } catch (e) {
-      
       console.error("Error during payment processing: ", e.message);
       toast.error("Failed to process payment. Please try again.");
     }
   };
+
   return (
     <div className="buynow-container">
       <div className="buynow-form-container">
@@ -127,6 +133,7 @@ const BuyNow = () => {
               type="text"
               autoComplete="address"
               required
+              style={{ height: '140px' }}  
               className="buynow-input"
             />
           </div>
@@ -150,7 +157,8 @@ const BuyNow = () => {
               type="submit"
               onClick={makePayment}
               className="buynow-button"
-            >Make Payment
+            >
+              Make Payment
             </button>
           </div>
         </form>
