@@ -60,15 +60,15 @@ const BuyNow = () => {
     const saltIndex = "1";
 
     const base64 = btoa(JSON.stringify(payload));
-    const url = ${base64}/pg/v1/pay${saltKey};
+    const url = `${base64}/pg/v1/pay${saltKey}`;
 
     const sha = await sha256(url);
-    const checksum = ${sha}###${saltIndex};
+    const checksum =` ${sha}###${saltIndex}`;
     const paymentData = { base64, checksum };
 
     try {
       const backendUrl = import.meta.env.VITE_BACKEND_URL;
-      const res = await axios.post(${backendUrl}/checkout, paymentData);
+      const res = await axios.post(`${backendUrl}/checkout, paymentData`);
       if (res.data && res.data.data.instrumentResponse.redirectInfo.url) {
         window.location.href =
           res.data.data.instrumentResponse.redirectInfo.url;
