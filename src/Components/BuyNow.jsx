@@ -146,8 +146,7 @@ const BuyNow = () => {
               type="submit"
               onClick={makePayment}
               className="buynow-button"
-            >
-              Make Payment
+            >Make Payment
             </button>
           </div>
         </form>
