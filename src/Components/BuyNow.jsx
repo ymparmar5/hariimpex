@@ -30,7 +30,7 @@ const BuyNow = () => {
       merchantId: "HARIIMPEXONLINE",
       merchantTransactionId: orderId,
       merchantUserId: "test1314",
-      amount: cartTotal,
+      amount: 100,
       redirectUrl: `https://hariimpex.in/success?orderId=${orderId}`,
       redirectMode: "REDIRECT",
       callbackUrl: `https://hariimpex.in/2e6bdb93-1f2e-40f5-bf47-93a466f953c1?orderId=${orderId}`,
@@ -63,12 +63,15 @@ const BuyNow = () => {
     const url = `${base64}/pg/v1/pay${saltKey}`;
 
     const sha = await sha256(url);
-    const checksum =` ${sha}###${saltIndex}`;
+    const checksum =`${sha}###${saltIndex}`;
     const paymentData = { base64, checksum };
 
     try {
       const backendUrl = import.meta.env.VITE_BACKEND_URL;
-      const res = await axios.post(`${backendUrl}/checkout, paymentData`);
+      console.log('payload', payload)
+      console.log("11",paymentData);
+      const res = await axios.post(`${backendUrl}/checkout`, paymentData);
+      console.log("22",res);
       if (res.data && res.data.data.instrumentResponse.redirectInfo.url) {
         window.location.href =
           res.data.data.instrumentResponse.redirectInfo.url;
@@ -76,6 +79,7 @@ const BuyNow = () => {
         toast.error("Failed to initiate payment. Please try again.");
       }
     } catch (e) {
+      
       console.error("Error during payment processing: ", e.message);
       toast.error("Failed to process payment. Please try again.");
     }
