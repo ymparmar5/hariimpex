@@ -27,13 +27,13 @@ const BuyNow = () => {
     const orderId = uuidv4();
 
     const payload = {
-      merchantId: "M22EJDYBLPU2G",
+      merchantId: "HARIIMPEXONLINE",
       merchantTransactionId: orderId,
       merchantUserId: "test1314",
       amount: cartTotal,
-      redirectUrl: https://hariimpex.in/success?orderId=${orderId},
+      redirectUrl: "https://hariimpex.in/success?orderId=${orderId}",
       redirectMode: "REDIRECT",
-      callbackUrl: https://hariimpex.in/2e6bdb93-1f2e-40f5-bf47-93a466f953c1?orderId=${orderId},
+      callbackUrl:" https://hariimpex.in/2e6bdb93-1f2e-40f5-bf47-93a466f953c1?orderId=${orderId}",
       mobileNumber: "9909097033",
       paymentInstrument: {
         type: "PAY_PAGE",
