@@ -1,7 +1,6 @@
-/* eslint-disable react/prop-types */
 import { useState, useEffect } from 'react';
-import MyContext from './myContext';
-import { collection, deleteDoc, doc, onSnapshot, orderBy, query } from 'firebase/firestore';
+import myContext from '../Context/myContext';
+import { collection, deleteDoc, doc, onSnapshot, orderBy, query, addDoc, limit, getDocs } from 'firebase/firestore';
 import { fireDB } from "../FireBase/FireBaseConfig";
 import toast from 'react-hot-toast';
 
@@ -33,11 +32,12 @@ function MyState({ children }) {
     const getAllOrderFunction = () => {
         setLoading(true);
         try {
-            const q = query(collection(fireDB, 'order'), orderBy('time'));
+            const q = query(collection(fireDB, 'orders'), orderBy('time') );
             const unsubscribe = onSnapshot(q, (querySnapshot) => {
                 const orderArray = [];
-                querySnapshot.forEach((doc) => {
+                querySnapshot.forEach((doc) =>  {
                     orderArray.push({ ...doc.data(), id: doc.id });
+                  
                 });
                 setGetAllOrder(orderArray);
                 setLoading(false);
@@ -49,16 +49,32 @@ function MyState({ children }) {
         }
     };
 
+
+
     const OrderDelete = async (id) => {
         setLoading(true);
         try {
-            await deleteDoc(doc(fireDB, 'order', id));
+            await deleteDoc(doc(fireDB, 'orders', id));
             toast.success('Order Deleted successfully');
             getAllOrderFunction();
         } catch (error) {
             console.error('Error deleting order:', error);
         } finally {
             setLoading(false);
+        }
+    };
+
+    const addOrder = async (orderDetails) => {
+        try {
+            await addDoc(collection(fireDB, 'orders'), orderDetails);
+            const ordersQuery = query(collection(fireDB, 'orders'), orderBy('time', 'desc'), limit(10));
+            const querySnapshot = await getDocs(ordersQuery);
+            const orderArray = querySnapshot.docs.map(doc => ({ ...doc.data(), id: doc.id }));
+            setGetAllOrder(orderArray);
+            toast.success('Order added successfully');
+        } catch (error) {
+            console.error('Error adding order:', error);
+            toast.error('Failed to add order');
         }
     };
 
@@ -81,6 +97,37 @@ function MyState({ children }) {
         }
     };
 
+    const addUser = async (user) => {
+        try {
+            await addDoc(collection(fireDB, 'user'), user);
+            toast.success('User added successfully');
+        } catch (error) {
+            console.error('Error adding user:', error);
+            toast.error('Failed to add user');
+        }
+    };
+    const deleteUser = async (uid) => {
+        try {
+            await deleteDoc(doc(fireDB, 'user', uid));
+            toast.success('User deleted successfully');
+            getAllUserFunction(); // Refresh the user list
+        } catch (error) {
+            console.error('Error deleting user:', error);
+            toast.error('Failed to delete user');
+        }
+    };
+
+    // const updateUserRole = async (user, newRole) => {
+    //     try {
+    //         await updateDoc(doc(fireDB, 'user', user.uid), { role: newRole });
+    //         toast.success('User role updated successfully');
+    //         getAllUserFunction(); // Refresh the user list
+    //     } catch (error) {
+    //         console.error('Error updating user role:', error);
+    //         toast.error('Failed to update user role');
+    //     }
+    // };
+
     useEffect(() => {
         const unsubscribeProducts = getAllProductFunction();
         const unsubscribeOrders = getAllOrderFunction();
@@ -94,7 +141,7 @@ function MyState({ children }) {
     }, []);
 
     return (
-        <MyContext.Provider value={{
+        <myContext.Provider value={{
             loading,
             setLoading,
             getAllProduct,
@@ -102,10 +149,14 @@ function MyState({ children }) {
             getAllOrderFunction,
             getAllOrder,
             OrderDelete,
-            getAllUser
+            getAllUser,
+            addOrder,
+            addUser,
+            // deleteUser,
+            // updateUserRole
         }}>
             {children}
-        </MyContext.Provider>
+        </myContext.Provider>
     );
 }
 

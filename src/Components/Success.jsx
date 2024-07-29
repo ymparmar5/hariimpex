@@ -26,7 +26,8 @@ const Success = () => {
     }
   }, [orderId]);
 
-  return <div>Payment Successful!</div>;
+  return <h1>
+    thanks for your order!</h1>;
 };
 
 export default Success;

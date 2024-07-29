@@ -1,0 +1,103 @@
+/* UserDashboard.css */
+
+.main-content {
+    min-height: 100vh;
+}
+
+.container {
+    max-width: 1200px;
+    margin: 0 auto;
+    padding: 20px;
+}
+
+.top {
+    background-color: #f0f4ff;
+    padding: 20px;
+    border-radius: 10px;
+    border: 1px solid #e0e4ff;
+    text-align: center;
+}
+
+.top img {
+    max-width: 100px;
+    margin: 0 auto;
+}
+
+.top h1 {
+    margin-top: 10px;
+    font-size: 1.25rem;
+    font-weight: bold;
+}
+
+.top span {
+    font-weight: bold;
+}
+
+.bottom {
+    margin-top: 20px;
+}
+
+.order-container {
+    display: flex;
+    flex-direction: column;
+    gap: 20px;
+}
+
+.order-item {
+    display: flex;
+    flex-direction: column;
+    border: 1px solid #e0e4ff;
+    border-radius: 10px;
+    overflow: hidden;
+}
+
+.order-item .left,
+.order-item .right {
+    padding: 20px;
+    background-color: #f0f4ff;
+}
+
+.order-item .left {
+    border-right: 1px solid #e0e4ff;
+}
+
+.order-item .left .info {
+    display: flex;
+    flex-wrap: wrap;
+    gap: 10px;
+}
+
+.order-item .left .info .item {
+    flex: 1 1 50%;
+}
+
+.order-item .left .info .item span {
+    display: block;
+    font-weight: bold;
+}
+
+.order-item .right .details {
+    display: flex;
+    gap: 20px;
+}
+
+.order-item .right .details img {
+    max-width: 150px;
+    border: 1px solid #e0e4ff;
+    border-radius: 10px;
+}
+
+.order-item .right .details .description {
+    flex: 1;
+}
+
+.order-item .right .details .description p {
+    margin-top: 5px;
+    font-size: 1rem;
+    color: #555;
+}
+
+.order-item .right .details .description .price {
+    margin-top: 10px;
+    font-weight: bold;
+}

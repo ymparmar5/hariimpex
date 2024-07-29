@@ -1,90 +1,50 @@
 import { useContext } from "react";
 import myContext from "../../Context/myContext";
+import '../../Style/UserDetail.css';
 
 const UserDetail = () => {
     const context = useContext(myContext);
     const { getAllUser } = context;
+
+
+
     return (
-        <div>
-            <div>
-                <div className="py-5 flex justify-between items-center">
-                    {/* text  */}
-                    <h1 className=" text-xl text-pink-300 font-bold">All User</h1>
-                </div>
-
-                {/* table  */}
-                <div className="w-full overflow-x-auto">
-                    <table className="w-full text-left border border-collapse sm:border-separate border-pink-100 text-pink-400" >
-                        <tbody>
-                            <tr>
-                                <th scope="col"
-                                    className="h-12 px-6 text-md border-l first:border-l-0 border-pink-100 text-slate-700 bg-slate-100 font-bold fontPara">
-                                    S.No.
-                                </th>
-
-                                <th scope="col"
-                                    className="h-12 px-6 text-md border-l first:border-l-0 border-pink-100 text-slate-700 bg-slate-100 font-bold fontPara">
-                                    Name
-                                </th>
-
-                                <th scope="col"
-                                    className="h-12 px-6 text-md border-l first:border-l-0 border-pink-100 text-slate-700 bg-slate-100 font-bold fontPara">
-                                    Email
-                                </th>
-
-                                <th scope="col"
-                                    className="h-12 px-6 text-md border-l first:border-l-0 border-pink-100 text-slate-700 bg-slate-100 font-bold fontPara">
-                                    Uid
-                                </th>
-
-                                <th scope="col"
-                                    className="h-12 px-6 text-md border-l first:border-l-0 border-pink-100 text-slate-700 bg-slate-100 font-bold fontPara">
-                                   Role
-                                </th>
-
-                                <th scope="col"
-                                    className="h-12 px-6 text-md border-l first:border-l-0 border-pink-100 text-slate-700 bg-slate-100 font-bold fontPara">
-                                    Date
-                                </th>
-
+        <div className="user-detail-container">
+            <div className="header">
+                <h1 className="title">All Users</h1>
+            </div>
+            <div className="table-container">
+                <table className="user-table">
+                    <thead>
+                        <tr>
+                            <th>S.No.</th>
+                            <th>Name</th>
+                            <th>Email</th>
+                            <th>Role</th>
+                            <th>Date</th>
+                        </tr>
+                    </thead>
+                    <tbody>
+                        {getAllUser.map((user, index) => (
+                            <tr key={user.uid}>
+                                <td>{index + 1}</td>
+                                <td>{user.name}</td>
+                                <td>{user.email}</td>
+                                <td>
+                                    <select
+                                        value={user.role}
+                                        onChange={(e) => handleRoleChange(user, e.target.value)}
+                                    >
+                                        <option value="user">User</option>
+                                        <option value="admin">Admin</option>
+                                    </select>
+                                </td>
+                                <td>{user.date}</td>
+                              
                             </tr>
-                            {
-                                getAllUser.map((value, index) => {
-                                    return (
-                                        <tr key={index} className="text-pink-300">
-                                            <td
-                                                className="h-12 px-6 text-md transition duration-300 border-t border-l first:border-l-0 border-pink-100 stroke-slate-500 text-slate-500 ">
-                                                {index + 1}
-                                            </td>
-
-                                            <td
-                                                className="h-12 px-6 text-md transition duration-300 border-t border-l first:border-l-0 border-pink-100 stroke-slate-500 text-slate-500 first-letter:uppercase ">
-                                                {value.name}
-                                            </td>
-
-                                            <td className="h-12 px-6 text-md transition duration-300 border-t border-l first:border-l-0 border-pink-100 stroke-slate-500 text-slate-500 cursor-pointer ">
-                                                {value.email}
-                                            </td>
-
-                                            <td className="h-12 px-6 text-md transition duration-300 border-t border-l first:border-l-0 border-pink-100 stroke-slate-500 text-slate-500  cursor-pointer ">
-                                                {value.uid}
-                                            </td>
-
-                                            <td className="h-12 px-6 text-md transition duration-300 border-t border-l first:border-l-0 border-pink-100 stroke-slate-500 text-slate-500  cursor-pointer ">
-                                                {value.role}
-                                            </td>
-
-                                            <td className="h-12 px-6 text-md transition duration-300 border-t border-l first:border-l-0 border-pink-100 stroke-slate-500 text-slate-500 cursor-pointer ">
-                                                {value.date}
-                                            </td>
-                                        </tr>
-                                    )
-                                })
-                            }
-
-                        </tbody>
-                    </table>
-                </div>
+                        ))}
+                    </tbody>
+                </table>
             </div>
         </div>
     );

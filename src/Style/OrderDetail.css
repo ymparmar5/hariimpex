@@ -45,8 +45,9 @@
 
 
 
-.delete-button {
+#delete-button {
     color: red;
+    background-color: white;
     cursor: pointer;
 }
 

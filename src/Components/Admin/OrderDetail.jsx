@@ -1,46 +1,71 @@
-import React, { useContext } from "react";
+import React, { useContext, useEffect } from "react";
 import myContext from "../../Context/myContext";
-import '../../Style/OrderDetail.css'; // Import the custom CSS file
+import '../../Style/OrderDetail.css';
 
 const OrderDetail = () => {
     const context = useContext(myContext);
-    const { getAllOrder, OrderDelete } = context;
+
+    const { getAllOrder, getAllOrderFunction, OrderDelete } = context;
+      
+    useEffect(() => {
+        getAllOrderFunction();
+    }, []);
+
 
     return (
         <div className="order-container">
             <div className="order-header">
-                <h1>All Order</h1>
+                <h1>All Orders</h1>
             </div>
             <div className="order-table-container">
                 <table className="order-table">
-                    <tbody>
+                    <thead>
                         <tr>
-                            <th></th><th></th><th></th><th></th><th></th><th></th><th></th><th></th><th></th><th></th><th></th><th></th><th></th><th></th><th></th><th></th>
+                            <th>#</th>
+                            <th>Image</th>
+                            <th>Title</th>
+                            <th>Category</th>
+                            <th>Price</th>
+                            <th>Quantity</th>
+                            <th>Total</th>
+                            <th>Status</th>
+                            <th>Name</th>
+                            <th>Address</th>
+                            <th>Pincode</th>
+                            <th>Mobile</th>
+                            <th>Date</th>
+                            <th>Action</th>
                         </tr>
-                        {getAllOrder.map((order) => (
-                            <React.Fragment key={order.id}>
-                                {order.cartItems.map((item, index) => (
-                                    <tr key={index}>
-                                        <td>{index + 1}</td>
-                                        <td>{item.id}</td>
-                                        <td><img src={item.imgurl1} alt="img" /></td>
-                                        <td>{item.title}</td>
-                                        <td>{item.category}</td>
-                                        <td>₹{item.price}</td>
-                                        <td>{item.quantity}</td>
-                                        <td>₹{item.price * item.quantity}</td>
-                                        <td>{order.status}</td>
-                                        <td>{order.addressInfo.name}</td>
-                                        <td>{order.addressInfo.address}</td>
-                                        <td>{order.addressInfo.pincode}</td>
-                                        <td>{order.addressInfo.mobileNumber}</td>
-                                        <td>{order.email}</td>
-                                        <td>{order.date}</td>
-                                        <td onClick={() => OrderDelete(order.id)} className="delete-button">Delete</td>
-                                    </tr>
-                                ))}
-                            </React.Fragment>
-                        ))}
+                    </thead>
+                    <tbody>
+                        {getAllOrder.length > 0 ? (
+                            getAllOrder.map((order, index) => (
+                                <React.Fragment key={order.id}>
+                                    {order.items.map((item, itemIndex) => (
+                                        <tr key={itemIndex}>
+                                            <td>{index + 1}</td>
+                                            <td><img src={item.imgurl1} alt="img" /></td>
+                                            <td>{item.title}</td>
+                                            <td>{item.category}</td>
+                                            <td>₹{item.price}</td>
+                                            <td>{item.quantity}</td>
+                                            <td>₹{item.price * item.quantity}</td>
+                                            <td>{order.status}</td>
+                                            <td>{order.name}</td>
+                                            <td>{order.address}</td>
+                                            <td>{order.pincode}</td>
+                                            <td>{order.mobile}</td>
+                                            <td>{order.date.toString()}</td>
+                                            <td onClick={() => OrderDelete(order.id)} id="delete-button">Delete</td>
+                                        </tr>
+                                    ))}
+                                </React.Fragment>
+                            ))
+                        ) : (
+                            <tr>
+                                <td colSpan="16">No orders found.</td>
+                            </tr>
+                        )}
                     </tbody>
                 </table>
             </div>

@@ -3,89 +3,71 @@ import { Link, useNavigate } from "react-router-dom";
 import myContext from "../../Context/myContext";
 import Loader from "../Loader";
 import { deleteDoc, doc } from "firebase/firestore";
-import {fireDB} from "../../FireBase/FireBaseConfig"
+import { fireDB } from "../../FireBase/FireBaseConfig";
 import toast from "react-hot-toast";
+import "../../Style/ProductDetail.css"
 
 const ProductDetail = () => {
     const context = useContext(myContext);
     const { loading, setLoading, getAllProduct, getAllProductFunction } = context;
-    // console.log(getAllProduct)
 
-    // navigate 
     const navigate = useNavigate();
 
-    // Delete product 
     const deleteProduct = async (id) => {
-        setLoading(true)
+        setLoading(true);
         try {
-            await deleteDoc(doc(fireDB, 'products', id))
-            toast.success('Product Deleted successfully')
+            await deleteDoc(doc(fireDB, 'products', id));
+            toast.success('Product Deleted successfully');
             getAllProductFunction();
-            setLoading(false)
+            setLoading(false);
         } catch (error) {
-            console.log(error)
-            setLoading(false)
+            console.log(error);
+            setLoading(false);
         }
-    }
+    };
+
     return (
-        <div>
-            <div className="py-5 flex justify-between items-center">
-                {/* text  */}
-                <h1 className=" text-xl text-indigo-300 font-bold">All Product</h1>
-                {/* Add Product Button  */}
+        <div className="product-detail">
+            <div className="header">
+                <h1 className="title">All Product</h1>
                 <Link to={'/AddProductPage'}>
-                    <button className="px-5 py-2 bg-indigo-50 border border-indigo-100 rounded-lg">Add Product</button>
+                    <button className="add-product-button">Add Product</button>
                 </Link>
             </div>
-            {/* Loading  */}
-            <div className="flex justify-center relative top-20">
-                {loading && <Loader />}
-            </div>
-            {/* table  */}
-            <div className="w-full overflow-x-auto mb-5">
-                <table className="w-full text-left border border-collapse sm:border-separate border-indigo-100 text-indigo-400" >
+
+            {loading && <Loader className="loader" />}
+
+            <div className="table-container">
+                <table className="product-table">
                     <tbody>
                         <tr>
-                            <th scope="col" className="h-12 px-6 text-md border-l first:border-l-0 border-indigo-100 text-slate-700 bg-slate-100 font-bold fontPara">S.No.</th>
-                            <th scope="col" className="h-12 px-6 text-md border-l first:border-l-0 border-indigo-100 text-slate-700 bg-slate-100 font-bold fontPara">Image</th>
-                            <th scope="col" className="h-12 px-6 text-md font-bold fontPara border-l first:border-l-0 border-indigo-100 text-slate-700 bg-slate-100">Title</th>
-                            <th scope="col" className="h-12 px-6 text-md font-bold fontPara border-l first:border-l-0 border-indigo-100 text-slate-700 bg-slate-100">Price</th>
-                            <th scope="col" className="h-12 px-6 text-md font-bold fontPara border-l first:border-l-0 border-indigo-100 text-slate-700 bg-slate-100">Category</th>
-                            <th scope="col" className="h-12 px-6 text-md font-bold fontPara border-l first:border-l-0 border-indigo-100 text-slate-700 bg-slate-100"> Date</th>
-                            <th scope="col" className="h-12 px-6 text-md font-bold fontPara border-l first:border-l-0 border-indigo-100 text-slate-700 bg-slate-100">Action</th>
-                            <th scope="col" className="h-12 px-6 text-md font-bold fontPara border-l first:border-l-0 border-indigo-100 text-slate-700 bg-slate-100">Action</th>
+                            <th>S.No.</th>
+                            <th>Image</th>
+                            <th>Title</th>
+                            <th>Price</th>
+                            <th>Category</th>
+                            <th>Date</th>
+                            <th>Action</th>
+                            <th>Action</th>
                         </tr>
                         {getAllProduct.map((item, index) => {
-                            
-                            const { id, title, price, category, date, imgurl1 } = item
+                            const { id, title, price, category, date, imgurl1 } = item;
                             return (
-                                <tr key={index} className="text-indigo-300">
-                                    <td className="h-12 px-6 text-md transition duration-300 border-t border-l first:border-l-0 border-indigo-100 stroke-slate-500 text-slate-500 ">
-                                        {index + 1}.
-                                    </td>
-                                    <td className="h-12 px-6 text-md transition duration-300 border-t border-l first:border-l-0 border-indigo-100 stroke-slate-500 text-slate-500 first-letter:uppercase ">
-                                        <div className="flex justify-center">
-                                            <img className="w-20 " src={imgurl1} alt="" />
+                                <tr key={index}>
+                                    <td>{index + 1}.</td>
+                                    <td>
+                                        <div className="image-container">
+                                            <img className="product-image" src={imgurl1} alt="" />
                                         </div>
                                     </td>
-                                    <td className="h-12 px-6 text-md transition duration-300 border-t border-l first:border-l-0 border-indigo-100 stroke-slate-500 text-slate-500 first-letter:uppercase ">
-                                        {title}
-                                    </td>
-                                    <td className="h-12 px-6 text-md transition duration-300 border-t border-l first:border-l-0 border-indigo-100 stroke-slate-500 text-slate-500 first-letter:uppercase ">
-                                        ₹{price}
-                                    </td>
-                                    <td className="h-12 px-6 text-md transition duration-300 border-t border-l first:border-l-0 border-indigo-100 stroke-slate-500 text-slate-500 first-letter:uppercase ">
-                                        {category}
-                                    </td>
-                                    <td className="h-12 px-6 text-md transition duration-300 border-t border-l first:border-l-0 border-indigo-100 stroke-slate-500 text-slate-500 first-letter:uppercase ">
-                                        {date}
-                                    </td>
-                                    <td onClick={()=> navigate(`/update-product/${id}`)} className="h-12 px-6 text-md transition duration-300 border-t border-l first:border-l-0 border-indigo-100 stroke-slate-500 text-slate-500 text-green-500 cursor-pointer ">Edit
-                                    </td>
-                                    <td onClick={()=> deleteProduct(id)} className="h-12 px-6 text-md transition duration-300 border-t border-l first:border-l-0 border-indigo-100 stroke-slate-500 text-slate-500 text-red-500 cursor-pointer ">Delete
-                                    </td>
+                                    <td>{title}</td>
+                                    <td>₹{price}</td>
+                                    <td>{category}</td>
+                                    <td>{date}</td>
+                                    <td  onClick={() => navigate(`/update-product/${id}`)} id="edit-action">Edit</td>
+                                    <td onClick={() => deleteProduct(id)} id="delete-action">Delete</td>
                                 </tr>
-                            )
+                            );
                         })}
                     </tbody>
                 </table>
