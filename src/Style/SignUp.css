@@ -11,7 +11,7 @@
 #signup-form {
     padding: 2rem 2rem;
     border: 1px solid var(--color1);
-    width:25rem;
+    width: 25rem;
 }
 
 #signup-title {
@@ -38,6 +38,22 @@
     border-bottom: 1px solid var(--color1);
 }
 
+.password-input-container {
+    position: relative;
+}
+
+.password-input-container .signup-input {
+    padding-right: 40px;
+}
+
+.password-toggle-icon {
+    position: absolute;
+    right: 10px;
+    top: 50%;
+    transform: translateY(-50%);
+    cursor: pointer;
+}
+
 #signup-btn {
     font-size: 1.4rem;
     padding: 0.3rem;
@@ -49,30 +65,28 @@
 
 @media (max-width: 1235px) {
     #sign-up {
-        height: 775px;     
+        height: 775px;
     }
 }
+
 @media (max-width: 860px) {
     #sign-up {
         height: 848px;
-         padding: 0;
-        
+        padding: 0;
     }
 
-#signup-form {
+    #signup-form {
+        width: 25rem;
+    }
+}
 
-    width:25rem;
-}
-}
 @media (max-width: 400px) {
     #sign-up {
         height: 654px;
-         padding: 0;
-        
+        padding: 0;
     }
-    
+
     #signup-form {
-      
-        width:20rem;
+        width: 20rem;
     }
 }

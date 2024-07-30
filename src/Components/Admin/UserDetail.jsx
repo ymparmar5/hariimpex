@@ -30,15 +30,7 @@ const UserDetail = () => {
                                 <td>{index + 1}</td>
                                 <td>{user.name}</td>
                                 <td>{user.email}</td>
-                                <td>
-                                    <select
-                                        value={user.role}
-                                        onChange={(e) => handleRoleChange(user, e.target.value)}
-                                    >
-                                        <option value="user">User</option>
-                                        <option value="admin">Admin</option>
-                                    </select>
-                                </td>
+                                <td>{user.role}</td>
                                 <td>{user.date}</td>
                               
                             </tr>

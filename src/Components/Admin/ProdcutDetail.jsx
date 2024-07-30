@@ -5,7 +5,7 @@ import Loader from "../Loader";
 import { deleteDoc, doc } from "firebase/firestore";
 import { fireDB } from "../../FireBase/FireBaseConfig";
 import toast from "react-hot-toast";
-import "../../Style/ProductDetail.css"
+import "../../Style/ProductDetail.css";
 
 const ProductDetail = () => {
     const context = useContext(myContext);
@@ -27,7 +27,7 @@ const ProductDetail = () => {
     };
 
     return (
-        <div className="product-detail">
+        <div className="product-detailspage">
             <div className="header">
                 <h1 className="title">All Product</h1>
                 <Link to={'/AddProductPage'}>
@@ -64,8 +64,8 @@ const ProductDetail = () => {
                                     <td>₹{price}</td>
                                     <td>{category}</td>
                                     <td>{date}</td>
-                                    <td  onClick={() => navigate(`/update-product/${id}`)} id="edit-action">Edit</td>
-                                    <td onClick={() => deleteProduct(id)} id="delete-action">Delete</td>
+                                    <td onClick={() => navigate(`/update-product/${id}`)} className="edit-action">Edit</td>
+                                    <td onClick={() => deleteProduct(id)} className="delete-action">Delete</td>
                                 </tr>
                             );
                         })}

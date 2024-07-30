@@ -1,7 +1,7 @@
 import { useContext, useState } from "react";
 import { Link, useNavigate } from "react-router-dom";
 import myContext from "../Context/myContext"; // Change MyContext to myContext
-import { Timestamp, addDoc, collection } from "firebase/firestore";
+import { Timestamp } from "firebase/firestore";
 import { auth, fireDB } from "../FireBase/FireBaseConfig";
 import { createUserWithEmailAndPassword } from "firebase/auth";
 import toast from "react-hot-toast";
@@ -9,7 +9,7 @@ import Loader from "../Components/Loader";
 import "../Style/SignUp.css";
 
 const Signup = () => {
-    const context = useContext(myContext); 
+    const context = useContext(myContext);
     const { loading, setLoading, addUser } = context;
 
     // navigate 
@@ -22,6 +22,13 @@ const Signup = () => {
         password: "",
         role: "user"
     });
+
+    // Password visibility state
+    const [showPassword, setShowPassword] = useState(false);
+
+    const togglePasswordVisibility = () => {
+        setShowPassword(!showPassword);
+    };
 
     const userSignupFunction = async () => {
         if (userSignup.name === "" || userSignup.email === "" || userSignup.password === "") {
@@ -84,14 +91,22 @@ const Signup = () => {
                     onChange={(e) => setUserSignup({ ...userSignup, email: e.target.value })}
                     className='signup-input'
                 />
-                <input
-                    type="password"
-                    placeholder='Password'
-                    value={userSignup.password}
-                    onChange={(e) => setUserSignup({ ...userSignup, password: e.target.value })}
-                    className='signup-input'
-                />
-                <div  onClick={userSignupFunction} id="signup-btn">
+                <div className='password-input-container'>
+                    <input
+                        type={showPassword ? "text" : "password"}
+                        placeholder='Password'
+                        value={userSignup.password}
+                        onChange={(e) => setUserSignup({ ...userSignup, password: e.target.value })}
+                        className='signup-input'
+                    />
+                    <span
+                        onClick={togglePasswordVisibility}
+                        className='password-toggle-icon'
+                    >
+                        {showPassword ? '🙈' : '👁️'}
+                    </span>
+                </div>
+                <div onClick={userSignupFunction} id="signup-btn">
                     <button type='button' onClick={userSignupFunction}>Sign up</button>
                 </div>
                 <div>

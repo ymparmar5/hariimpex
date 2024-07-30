@@ -8,8 +8,6 @@ import Loader from "../Components/Loader";
 import { collection, onSnapshot, query, where } from "firebase/firestore";
 import "../Style/SignIn.css";
 
-
-
 const SignIN = () => {
     const context = useContext(myContext);
     const { loading, setLoading } = context;
@@ -23,13 +21,18 @@ const SignIN = () => {
         password: ""
     });
 
-    /**========================================================================
-    *========================================================================**/
+    // Password visibility state
+    const [showPassword, setShowPassword] = useState(false);
+
+    const togglePasswordVisibility = () => {
+        setShowPassword(!showPassword);
+    };
 
     const userLoginFunction = async () => {
         // validation 
         if (userLogin.email === "" || userLogin.password === "") {
-            toast.error("All Fields are required")
+            toast.error("All Fields are required");
+            return;
         }
 
         setLoading(true);
@@ -45,16 +48,16 @@ const SignIN = () => {
                 const data = onSnapshot(q, (QuerySnapshot) => {
                     let user;
                     QuerySnapshot.forEach((doc) => user = doc.data());
-                    localStorage.setItem("users", JSON.stringify(user) )
+                    localStorage.setItem("users", JSON.stringify(user));
                     setUserLogin({
                         email: "",
                         password: ""
-                    })
+                    });
                     toast.success("Login Successfully");
                     setLoading(false);
-                    if(user.role === "user") {
+                    if (user.role === "user") {
                         navigate('/user-dashboard');
-                    }else{
+                    } else {
                         navigate('/admin-dashboard');
                     }
                 });
@@ -68,56 +71,63 @@ const SignIN = () => {
             setLoading(false);
             toast.error("Login Failed");
         }
-    }
-    return (
-        <div  id="sign-in" >
-            {loading && <Loader />}
-          
-            <div id="signin-form" >
+    };
 
-                    <h3  id="signin-title">Sign In
-                    </h3>
-       
-             
+    return (
+        <div id="sign-in">
+            {loading && <Loader />}
+
+            <div id="signin-form">
+                <h3 id="signin-title">Sign In</h3>
+
+                <input
+                    type="email"
+                    name="email"
+                    autoComplete="on"
+
+                    placeholder='Email Address'
+                    value={userLogin.email}
+                    onChange={(e) => {
+                        setUserLogin({
+                            ...userLogin,
+                            email: e.target.value
+                        });
+                    }}
+                    className='signin-input'
+                />
+
+                <div className='password-input-container'>
                     <input
-                        type="email"
-                        name="email"
-                        placeholder='Email Address'
-                        value={userLogin.email}
-                        onChange={(e) => {
-                            setUserLogin({
-                                ...userLogin,
-                                email: e.target.value
-                            })
-                        }}
-                        className='signin-input'
-                    />
-          
-                    <input
-                        type="password"
+                        type={showPassword ? "text" : "password"}
                         placeholder='Password'
+                        autoComplete="on"
                         value={userLogin.password}
                         onChange={(e) => {
                             setUserLogin({
                                 ...userLogin,
                                 password: e.target.value
-                            })
+                            });
                         }}
                         className='signin-input'
                     />
+                    <span
+                        onClick={togglePasswordVisibility}
+                        className='password-toggle-icon'
+                    >
+                        {showPassword ? '🙈' : '👁️'}
+                    </span>
+                </div>
 
-                <div  id="signin-btn" >
+                <div id="signin-btn">
                     <button
                         type='button'
                         onClick={userLoginFunction}
-                   
-                    >Sign In
+                    >
+                        Sign In
                     </button>
                 </div>
-                <div className='signin-text' >
-                    <p >Don't Have an account <b> <Link className='signin-text' to={'/sign-up'}>Sign up</Link>
-                    </b>
-                    </p>
+                <div className='signin-text'>
+                    <p>Don't Have an account <b><Link className='signin-text' to={'/sign-up'}>Sign up</Link></b></p>
                 </div>
             </div>
         </div>

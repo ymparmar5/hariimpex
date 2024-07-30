@@ -55,7 +55,7 @@ const Header = () => {
             <Link to="/cart">Cart</Link>
           </li>
           <li>
-            <Link to="/contact">Contact Us</Link>
+            <Link to="/contact">Contact</Link>
           </li>
           <li>
             <Link to="/about">About</Link>

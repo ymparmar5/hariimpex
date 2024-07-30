@@ -47,6 +47,31 @@
     margin: 1rem 0rem;
 }
 
+
+.signin-input {
+    width: 100%;
+    padding: 10px;
+    margin: 10px 0;
+    box-sizing: border-box;
+}
+
+.password-input-container {
+    position: relative;
+}
+
+.password-input-container .signin-input {
+    padding-right: 40px;
+}
+
+.password-toggle-icon {
+    position: absolute;
+    right: 10px;
+    top: 50%;
+    transform: translateY(-50%);
+    cursor: pointer;
+}
+
+
 @media (max-width: 1235px) {
     #sign-in {
         height: 775px;     
