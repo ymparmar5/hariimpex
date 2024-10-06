@@ -96,3 +96,26 @@
         width: 150%;
       }
   }
+
+  @media (max-width: 426px) {
+    .search-input {
+      padding: 6px 30px 6px  6px;
+      margin: 0rem -1.8rem ;
+      width: 39vw;
+      }
+      .dropdown-container {  
+        width: 250%;
+      }
+  }
+
+
+  @media (max-width: 376px) {
+    .search-input {
+      padding: 6px 30px 6px  6px;
+      margin: 0rem -2.5rem ;
+      width: 35vw;
+      }
+      .dropdown-container {  
+        width: 300%;
+      }
+  }
