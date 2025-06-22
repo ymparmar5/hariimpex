@@ -5,6 +5,7 @@ import { Timestamp } from "firebase/firestore";
 import toast from "react-hot-toast";
 import { v4 as uuidv4 } from "uuid";
 import sha256 from "crypto-js/sha256";
+import Hex from "crypto-js/enc-hex";
 import "../Style/Buynow.css";
 import myContext from "../Context/myContext";
 
@@ -17,11 +18,15 @@ const BuyNow = () => {
         cartTotal: 0,
     };
     const context = useContext(myContext);
-    const { addOrder, setLoading } = context; 
+    const { addOrder, setLoading } = context;
 
     const handleFormData = (e) => {
         const updatedData = { ...data, [e.target.name]: e.target.value };
         setData(updatedData);
+    };
+
+    const toBase64 = (obj) => {
+        return Buffer.from(JSON.stringify(obj)).toString("base64");
     };
 
     const makePayment = async (e) => {
@@ -39,12 +44,12 @@ const BuyNow = () => {
             status: "pending",
             items: cartItems,
             totalAmount: cartTotal,
-            time: Timestamp.now(),        
-           date: new Date().toLocaleString("en-US", {
+            time: Timestamp.now(),
+            date: new Date().toLocaleString("en-US", {
                 month: "short",
                 day: "2-digit",
                 year: "numeric",
-            })
+            }),
         };
 
         setLoading(true);
@@ -55,7 +60,7 @@ const BuyNow = () => {
                 merchantId: import.meta.env.VITE_MERCHANT_ID,
                 merchantTransactionId: orderId,
                 merchantUserId: "test1314",
-                amount: cartTotal * 100, // Convert from paisa to rupees
+                amount: cartTotal * 100, // in paisa
                 redirectUrl: `https://hariimpex.in/success?orderId=${orderId}`,
                 redirectMode: "REDIRECT",
                 callbackUrl: `https://hariimpex.in/2e6bdb93-1f2e-40f5-bf47-93a466f953c1?orderId=${orderId}`,
@@ -65,26 +70,29 @@ const BuyNow = () => {
                 },
             };
 
+            const base64 = toBase64(payload);
             const saltKey = import.meta.env.VITE_SALT_KEY;
             const saltIndex = "1";
 
-            const base64 = btoa(JSON.stringify(payload));
-            const url = `${base64}/pg/v1/pay${saltKey}`;
-
-            const sha = await sha256(url);
+            const stringToHash = `${base64}/pg/v1/pay${saltKey}`;
+            const sha = sha256(stringToHash).toString(Hex);
             const checksum = `${sha}###${saltIndex}`;
-            const paymentData = { base64, checksum };
 
+            const paymentData = { base64, checksum };
             const backendUrl = import.meta.env.VITE_BACKEND_URL;
+
             const res = await axios.post(`${backendUrl}/checkout`, paymentData);
-            if (res.data && res.data.data.instrumentResponse.redirectInfo.url) {
-                window.location.href =
-                    res.data.data.instrumentResponse.redirectInfo.url;
+
+            const redirectUrl =
+                res?.data?.data?.instrumentResponse?.redirectInfo?.url;
+
+            if (redirectUrl) {
+                window.location.href = redirectUrl;
             } else {
                 toast.error("Failed to initiate payment. Please try again.");
             }
         } catch (error) {
-            console.error("Error adding document: ", error);
+            console.error("Error during payment:", error);
             toast.error("Failed to create order. Please try again.");
         } finally {
             setLoading(false);
